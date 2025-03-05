@@ -15,7 +15,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", user, {
+      const res = await axios.post("https://your-backend-url.vercel.app/api/auth/register", user, {
         withCredentials: true, // ✅ Fix CORS Issue
       });
       alert(res.data.message);
