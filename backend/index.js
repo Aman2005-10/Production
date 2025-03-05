@@ -16,12 +16,14 @@ app.use('/api/auth', authRoutes);
 // ✅ MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000, // Timeout fix
 }).then(() => {
-    console.log("MongoDB Connected ✅");
+    console.log("✅ MongoDB Connected");
 }).catch(err => {
-    console.error("MongoDB Connection Error ❌", err);
+    console.error("❌ MongoDB Connection Error", err);
 });
+
 
 app.get("/", (req, res) => {
     res.send("API is running...");
